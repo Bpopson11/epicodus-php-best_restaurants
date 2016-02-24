@@ -105,7 +105,7 @@
 
 			function delete()
 			{
-				$GLOBALS['DB']->exec("DELETE FROM restaurants WHERE id = {$this->getId()};");
+				$GLOBALS['DB']->exec("DELETE rest, rev FROM restaurants rest INNER JOIN reviews rev ON rest.id = rev.restaurant_id WHERE rest.id = {{ $this->getId() }};");
 			}
 
 			function update($new_name)

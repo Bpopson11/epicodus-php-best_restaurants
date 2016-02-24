@@ -86,6 +86,14 @@
 		return $app['twig']->render('cuisine.html.twig', array('restaurants' => $cuisine->getRestaurants(), 'cuisine' => $cuisine));
 	});
 
+	$app->delete("/reviews/{restaurant_id}/{review_id}", function($restaurant_id, $review_id) use ($app)
+	{
+		$review = Review::find($review_id);
+		$review->delete();
+		$restaurant = Restaurant::find($restaurant_id);
+		return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant, 'reviews' => $restaurant->getReviews()));
+	});
+
 
 // Review Pages
 	$app->get("/restaurant/{id}", function($id) use ($app)
@@ -118,7 +126,13 @@
 		return $app['twig']->render('restaurant.html.twig', array('reviews' => $restaurant->getReviews(), 'restaurant' => $restaurant));
 	});
 
-
+	$app->delete("/reviews/{restaurant_id}/{review_id}", function($restaurant_id, $review_id) use ($app)
+	{
+	    $review = Review::find($review_id);
+	    $review->delete();
+		$restaurant = Restaurant::find($restaurant_id);
+		return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant, 'reviews' => $restaurant->getReviews()));
+	});
 
 	return $app;
 
