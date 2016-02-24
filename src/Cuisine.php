@@ -63,5 +63,10 @@
 				}
 				return $found_cuisine;
 			}
+
+			function delete()
+			{
+				$GLOBALS['DB']->exec("DELETE FROM cuisines WHERE id = {$this->getId()};");
+			}
 	}
  ?>

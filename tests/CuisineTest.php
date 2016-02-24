@@ -87,6 +87,26 @@
 						//Assert
 						$this->assertEquals($new_cuisine, $result);
 					}
+
+					function test_delete()
+					{
+						//Arrange
+						$cuisine_name = "Mexican";
+						$new_cuisine = new Cuisine($cuisine_name);
+						$new_cuisine->save();
+
+						$cuisine_name2 = "Korean";
+						$new_cuisine2 = new Cuisine($cuisine_name2);
+						$new_cuisine2->save();
+
+						//Act
+						$new_cuisine->delete();
+
+						$result = Cuisine::getAll();
+						//Assert
+						$this->assertEquals([$new_cuisine2], $result);
+
+					}
 			}
 
 ?>

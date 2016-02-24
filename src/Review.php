@@ -90,5 +90,10 @@
 				}
 				return $found_review;
 			}
+
+			function delete()
+			{
+				$GLOBALS['DB']->exec("DELETE FROM reviews WHERE id = {$this->getId()};");
+			}
 	}
  ?>

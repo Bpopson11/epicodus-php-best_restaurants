@@ -102,5 +102,10 @@
 				}
 				return $found_restaurant;
 			}
+
+			function delete()
+			{
+				$GLOBALS['DB']->exec("DELETE FROM restaurants WHERE id = {$this->getId()};");
+			}
 	}
  ?>
