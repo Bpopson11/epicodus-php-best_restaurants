@@ -107,6 +107,22 @@
 						$this->assertEquals([$new_cuisine2], $result);
 
 					}
+
+					function test_update()
+					{
+						//Arrange
+						$cuisine_name = "Mexican";
+						$new_cuisine = new Cuisine($cuisine_name);
+						$new_cuisine->save();
+						$new_type = "Latin";
+
+						//Act
+						$new_cuisine->update($new_type);
+
+						$result = Cuisine::getAll();
+						//Assert
+						$this->assertEquals('Latin', $new_cuisine->getType());
+					}
 			}
 
 ?>

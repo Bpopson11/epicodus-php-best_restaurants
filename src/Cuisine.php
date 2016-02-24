@@ -16,7 +16,7 @@
 				return $this->type;
 			}
 
-		function setType()
+		function setType($type)
 		{
 			$this->type = $type;
 		}
@@ -67,6 +67,12 @@
 			function delete()
 			{
 				$GLOBALS['DB']->exec("DELETE FROM cuisines WHERE id = {$this->getId()};");
+			}
+
+			function update($new_type)
+			{
+			    $GLOBALS['DB']->exec("UPDATE cuisines SET type = '{$new_type}' WHERE id = {$this->getId()};");
+			    $this->setType($new_type);
 			}
 	}
  ?>

@@ -186,6 +186,36 @@
 						$this->assertEquals([$new_review2], $result);
 
 					}
+
+					function test_update()
+					{
+						//Arrange
+						$cuisine_name = "Mexican";
+						$new_cuisine = new Cuisine($cuisine_name);
+						$new_cuisine->save();
+
+						$restaurant_name = "Taco Bell";
+						$restaurant_address = "123 Test Street";
+						$restaurant_cuisine_id =  $new_cuisine->getId();
+						$restaurant_description = "A lovely place";
+						$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
+						$new_restaurant->save();
+
+						$review_name = "Jason Awbrey";
+						$review_rating = 4;
+						$review_comments = "This place is amazing!";
+						$review_restId = $new_restaurant->getId();
+						$new_review = new Review($review_name, $review_rating, $review_comments, $review_restId);
+						$new_review->save();
+
+						$new_name = "Joe Karasek";
+
+						//Act
+						$new_review->update($new_name);
+
+						//Assert
+						$this->assertEquals('Joe Karasek', $new_review->getName());
+					}
 			}
 
 ?>
