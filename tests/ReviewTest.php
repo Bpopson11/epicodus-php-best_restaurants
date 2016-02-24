@@ -121,7 +121,8 @@
 					$new_review2->save();
 
 
-					$result =  Review::deleteAll();
+					Review::deleteAll();
+					$result =  Review::getAll();
 
 					$this->assertEquals([], $result);
 				}

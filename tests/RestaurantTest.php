@@ -16,7 +16,6 @@
 
 	require_once 'src/Cuisine.php';
 	require_once 'src/Restaurant.php';
-	require_once 'src/Review.php';
 
 
 
@@ -26,7 +25,6 @@
 		{
 			Cuisine::deleteAll();
 			Restaurant::deleteAll();
-			Review::deleteAll();
 		}
 
 		function test_save()
@@ -43,18 +41,12 @@
 			$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
 			$new_restaurant->save();
 
-			$review_name = "Jason Awbrey";
-			$review_rating = 4;
-			$review_comments = "This place is amazing!";
-			$review_restId = $new_restaurant->getId();
-			$new_review = new Review($review_name, $review_rating, $review_comments, $review_restId);
-			$new_review->save();
 
 			//Act
-			$result = Review::getAll();
+			$result = Restaurant::getAll();
 
 			//Assert
-			$this->assertEquals($new_review, $result[0]);
+			$this->assertEquals($new_restaurant, $result[0]);
 		}
 
 
@@ -72,24 +64,18 @@
 			$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
 			$new_restaurant->save();
 
-			$review_name = "Jason Awbrey";
-			$review_rating = 4;
-			$review_comments = "This place is amazing!";
-			$review_restId = $new_restaurant->getId();
-			$new_review = new Review($review_name, $review_rating, $review_comments, $review_restId);
-			$new_review->save();
-
-			$review_name2 = "Joe Karasek";
-			$review_rating2 = 0;
-			$review_comments2 = "This place is horrible!";
-			$review_restId2 = $new_restaurant->getId();
-			$new_review2 = new Review($review_name2, $review_rating2, $review_comments2, $review_restId2);
-			$new_review2->save();
+			$restaurant_name2 = "Qdoba Mexican Grill";
+			$restaurant_address2 = "321 Real Ave."
+			$restaurant_cuisine_id2 =  $new_cuisine->getId();
+			$restaurant_description2 = "A warm place"
+			$new_restaurant2 = new Restaurant($restaurant_name2, $restaurant_address2, $restaurant_cuisine_id2, $restaurant_description2);
+			$new_restaurant2->save();
 
 
-			$result = Review::getAll();
 
-			$this->assertEquals([$new_review, $new_review2], $result);
+			$result = Restaurant::getAll();
+
+			$this->assertEquals([$new_restaurant, $new_restaurant2], $result);
 
 		}
 
@@ -106,22 +92,17 @@
 					$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
 					$new_restaurant->save();
 
-					$review_name = "Jason Awbrey";
-					$review_rating = 4;
-					$review_comments = "This place is amazing!";
-					$review_restId = $new_restaurant->getId();
-					$new_review = new Review($review_name, $review_rating, $review_comments, $review_restId);
-					$new_review->save();
-
-					$review_name2 = "Joe Karasek";
-					$review_rating2 = 0;
-					$review_comments2 = "This place is horrible!";
-					$review_restId2 = $new_restaurant->getId();
-					$new_review2 = new Review($review_name2, $review_rating2, $review_comments2, $review_restId2);
-					$new_review2->save();
+					$restaurant_name2 = "Qdoba Mexican Grill";
+					$restaurant_address2 = "321 Real Ave."
+					$restaurant_cuisine_id2 =  $new_cuisine->getId();
+					$restaurant_description2 = "A warm place"
+					$new_restaurant2 = new Restaurant($restaurant_name2, $restaurant_address2, $restaurant_cuisine_id2, $restaurant_description2);
+					$new_restaurant2->save();
 
 
-					$result =  Review::deleteAll();
+					Restaurant::deleteAll();
+
+					$result = Restaurant::getAll();
 
 					$this->assertEquals([], $result);
 				}
