@@ -15,6 +15,8 @@
 
 
 	require_once 'src/Cuisine.php';
+	require_once 'src/Restaurant.php';
+	require_once 'src/Review.php';
 
 
 	class CuisineTest extends PHPUnit_Framework_TestCase
@@ -23,6 +25,7 @@
 		{
 			Cuisine::deleteAll();
 			Restaurant::deleteAll();
+			Review::deleteAll();
 		}
 
 		function test_save()

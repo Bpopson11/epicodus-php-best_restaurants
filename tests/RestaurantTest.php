@@ -16,6 +16,7 @@
 
 	require_once 'src/Cuisine.php';
 	require_once 'src/Restaurant.php';
+	require_once 'src/Review.php';
 
 
 
@@ -25,6 +26,7 @@
 		{
 			Cuisine::deleteAll();
 			Restaurant::deleteAll();
+			Review::deleteAll();
 		}
 
 		function test_save()
@@ -185,7 +187,29 @@
 
 					function test_getReviews()
 					{
+						//Arrange
+						$cuisine_name = "Mexican";
+						$new_cuisine = new Cuisine($cuisine_name);
+						$new_cuisine->save();
 
+						$restaurant_name = "Taco Bell";
+						$restaurant_address = "123 Test Street";
+						$restaurant_cuisine_id =  $new_cuisine->getId();
+						$restaurant_description = "A lovely place";
+						$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
+						$new_restaurant->save();
+
+						$review_name = "Jason Awbrey";
+						$review_rating = 4;
+						$review_comments = "This place is amazing!";
+						$review_restId = $new_restaurant->getId();
+						$new_review = new Review($review_name, $review_rating, $review_comments, $review_restId);
+						$new_review->save();
+
+						//Act
+						$result = $new_restaurant->getReviews();
+						//Assert
+						$this->assertEquals([$new_review], $result);
 					}
 			}
 
