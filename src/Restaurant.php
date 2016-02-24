@@ -70,7 +70,7 @@
 
 			static function getAll()
 			{
-				$returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurant;");
+				$returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants;");
 				$restaurants = array();
 				foreach($returned_restaurants as $restaurant)
 				{

@@ -67,7 +67,7 @@
 					$comments = $review['comments'];
 					$restaurant_id = $review['restaurant_id'];
 					$id = $review['id'];
-					$new_review = new Review($name, $address, $comments, $restaurant_id, $id);
+					$new_review = new Review($name, $rating, $comments, $restaurant_id, $id);
 					array_push($reviews, $new_review);
 				}
 				return $reviews;

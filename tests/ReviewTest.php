@@ -1,7 +1,5 @@
 <?php
 
-
-
 	/**
 	* @backupGlobals disabled
 	* @backupStaticAttributes disabled
@@ -12,13 +10,9 @@
 	$password = 'root';
 	$DB = new PDO($server, $username, $password);
 
-
-
 	require_once 'src/Cuisine.php';
 	require_once 'src/Restaurant.php';
 	require_once 'src/Review.php';
-
-
 
 	class ReviewTest extends PHPUnit_Framework_TestCase
 	{
@@ -37,9 +31,9 @@
 			$new_cuisine->save();
 
 			$restaurant_name = "Taco Bell";
-			$restaurant_address = "123 Test Street"
+			$restaurant_address = "123 Test Street";
 			$restaurant_cuisine_id =  $new_cuisine->getId();
-			$restaurant_description = "A lovely place"
+			$restaurant_description = "A lovely place";
 			$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
 			$new_restaurant->save();
 
@@ -66,9 +60,9 @@
 			$new_cuisine->save();
 
 			$restaurant_name = "Taco Bell";
-			$restaurant_address = "123 Test Street"
+			$restaurant_address = "123 Test Street";
 			$restaurant_cuisine_id =  $new_cuisine->getId();
-			$restaurant_description = "A lovely place"
+			$restaurant_description = "A lovely place";
 			$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
 			$new_restaurant->save();
 
@@ -100,9 +94,9 @@
 					$new_cuisine->save();
 
 					$restaurant_name = "Taco Bell";
-					$restaurant_address = "123 Test Street"
+					$restaurant_address = "123 Test Street";
 					$restaurant_cuisine_id =  $new_cuisine->getId();
-					$restaurant_description = "A lovely place"
+					$restaurant_description = "A lovely place";
 					$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
 					$new_restaurant->save();
 

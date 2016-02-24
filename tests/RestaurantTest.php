@@ -19,7 +19,7 @@
 
 
 
-	class ReviewTest extends PHPUnit_Framework_TestCase
+	class RestaurantTest extends PHPUnit_Framework_TestCase
 	{
 		protected function tearDown()
 		{
@@ -35,9 +35,9 @@
 			$new_cuisine->save();
 
 			$restaurant_name = "Taco Bell";
-			$restaurant_address = "123 Test Street"
+			$restaurant_address = "123 Test Street";
 			$restaurant_cuisine_id =  $new_cuisine->getId();
-			$restaurant_description = "A lovely place"
+			$restaurant_description = "A lovely place";
 			$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
 			$new_restaurant->save();
 
@@ -58,16 +58,16 @@
 			$new_cuisine->save();
 
 			$restaurant_name = "Taco Bell";
-			$restaurant_address = "123 Test Street"
+			$restaurant_address = "123 Test Street";
 			$restaurant_cuisine_id =  $new_cuisine->getId();
-			$restaurant_description = "A lovely place"
+			$restaurant_description = "A lovely place";
 			$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
 			$new_restaurant->save();
 
 			$restaurant_name2 = "Qdoba Mexican Grill";
-			$restaurant_address2 = "321 Real Ave."
+			$restaurant_address2 = "321 Real Ave.";
 			$restaurant_cuisine_id2 =  $new_cuisine->getId();
-			$restaurant_description2 = "A warm place"
+			$restaurant_description2 = "A warm place";
 			$new_restaurant2 = new Restaurant($restaurant_name2, $restaurant_address2, $restaurant_cuisine_id2, $restaurant_description2);
 			$new_restaurant2->save();
 
@@ -86,16 +86,16 @@
 					$new_cuisine->save();
 
 					$restaurant_name = "Taco Bell";
-					$restaurant_address = "123 Test Street"
+					$restaurant_address = "123 Test Street";
 					$restaurant_cuisine_id =  $new_cuisine->getId();
-					$restaurant_description = "A lovely place"
+					$restaurant_description = "A lovely place";
 					$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
 					$new_restaurant->save();
 
 					$restaurant_name2 = "Qdoba Mexican Grill";
-					$restaurant_address2 = "321 Real Ave."
+					$restaurant_address2 = "321 Real Ave.";
 					$restaurant_cuisine_id2 =  $new_cuisine->getId();
-					$restaurant_description2 = "A warm place"
+					$restaurant_description2 = "A warm place";
 					$new_restaurant2 = new Restaurant($restaurant_name2, $restaurant_address2, $restaurant_cuisine_id2, $restaurant_description2);
 					$new_restaurant2->save();
 
