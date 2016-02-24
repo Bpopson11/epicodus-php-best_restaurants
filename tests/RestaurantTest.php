@@ -182,6 +182,11 @@
 						//Assert
 						$this->assertEquals('Taco Hell', $new_restaurant->getName());
 					}
+
+					function test_getReviews()
+					{
+
+					}
 			}
 
 ?>

@@ -74,5 +74,10 @@
 			    $GLOBALS['DB']->exec("UPDATE cuisines SET type = '{$new_type}' WHERE id = {$this->getId()};");
 			    $this->setType($new_type);
 			}
+
+			function getRestaurants()
+			{
+				
+			}
 	}
  ?>

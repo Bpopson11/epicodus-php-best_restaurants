@@ -123,6 +123,27 @@
 						//Assert
 						$this->assertEquals('Latin', $new_cuisine->getType());
 					}
+
+					function test_getRestaurants()
+					{
+						//Arrange
+						$cuisine_name = "Mexican";
+						$new_cuisine = new Cuisine($cuisine_name);
+						$new_cuisine->save();
+
+						$restaurant_name = "Taco Bell";
+						$restaurant_address = "123 Test Street";
+						$restaurant_cuisine_id =  $new_cuisine->getId();
+						$restaurant_description = "A lovely place";
+						$new_restaurant = new Restaurant($restaurant_name, $restaurant_address, $restaurant_cuisine_id, $restaurant_description);
+						$new_restaurant->save();
+
+						//Act
+						$result = $new_cuisine->getRestaurants();
+						//Assert
+						$this->assertEquals([$new_restaurant], $result);
+
+					}
 			}
 
 ?>
