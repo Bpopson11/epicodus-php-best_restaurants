@@ -9,7 +9,7 @@
         <p>Here are all your restaurants:</p>
         <ul>
             {% for restaurant in restaurants %}
-                <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a></li>
+                <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a><a href="/restaurant/{{ cuisine.getId }}/{{ restaurant.getId }}/edit_form">Edit</a></li>
             {% endfor %}
         </ul>
     {% else %}
@@ -31,6 +31,16 @@
 
         <button type='submit'>Add Restaurant</button>
     </form>
+
+    {% if form %}
+        <form action="/restaurants/updated" method="post">
+            <input name="_method" type="hidden" value="patch">
+            <input name="current_restaurantId" type="hidden" value="{{ current_restaurant.getId() }}">
+            <input name="cuisine_id" type="hidden" value="{{ cuisine.getId() }}">
+            <input type="text" name="name">
+            <button type="submit" name="button">Edit Name</button>
+        </form>
+    {% endif %}
 
     <p><a href='/'>Home</a></p>
 </body>

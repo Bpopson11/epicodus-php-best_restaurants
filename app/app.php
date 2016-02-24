@@ -21,6 +21,7 @@
 	use Symfony\Component\HttpFoundation\Request;
 	Request::enableHttpMethodParameterOverride();
 
+// Home page showing cuisines
 
 	$app->get("/", function() use ($app)
 	{
@@ -36,7 +37,7 @@
 	});
 
 
-	$app->get("/cuisines/{id}/edit", function($id) use ($app)
+	$app->get("/cuisines/{id}/edit_form", function($id) use ($app)
 	{
 		$current_cuisine = Cuisine::find($id);
 		$cuisines = Cuisine::getAll();
@@ -44,20 +45,21 @@
 	});
 
 
-	$app->patch("/cuisines", function() use ($app)
+	$app->patch("/cuisines/updated", function() use ($app)
 	{
 		$cuisine_to_edit = Cuisine::find($_POST['current_cuisineId']);
 		$cuisine_to_edit->update($_POST['type']);
 		return $app['twig']->render('home.html.twig', array('cuisines' => Cuisine::getAll()));
 	});
 
-
+// Specific cuisine pages (show restaurants)
 
 	$app->get("/cuisine/{id}", function($id) use ($app)
 	{
 		$cuisine = Cuisine::find($id);
 		return $app['twig']->render('cuisine.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
 	});
+
 
 
 	$app->post("/restaurants", function() use ($app)
@@ -69,7 +71,23 @@
 
 	});
 
+	$app->get("/restaurant/{cid}/{rid}/edit_form", function($cid, $rid) use ($app)
+	{
+		$current_restaurant = Restaurant::find($rid);
+		$cuisine = Cuisine::find($cid);
+		return $app['twig']->render('cuisine.html.twig', array('current_restaurant' => $current_restaurant, 'cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants(), 'form' => true));
+	});
 
+	$app->patch("/restaurants/updated", function() use ($app)
+	{
+		$restaurant_to_edit = Restaurant::find($_POST['current_restaurantId']);
+		$restaurant_to_edit->update($_POST['name']);
+		$cuisine = Cuisine::find($_POST['cuisine_id']);
+		return $app['twig']->render('cuisine.html.twig', array('restaurants' => $cuisine->getRestaurants(), 'cuisine' => $cuisine));
+	});
+
+
+// Review Pages
 	$app->get("/restaurant/{id}", function($id) use ($app)
 	{
 		$restaurant = Restaurant::find($id);
@@ -83,6 +101,21 @@
 		$restaurant = Restaurant::find($_POST['restaurant_id']);
 		return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant, 'reviews' => $restaurant->getReviews()));
 
+	});
+
+	$app->get("/review/{restaurant_id}/{review_id}/edit_form", function($restaurant_id, $review_id) use ($app)
+	{
+		$current_review = Review::find($review_id);
+		$restaurant = Restaurant::find($restaurant_id);
+		return $app['twig']->render('restaurant.html.twig', array('current_review' => $current_review, 'restaurant' => $restaurant, 'reviews' => $restaurant->getReviews(), 'form' => true));
+	});
+
+	$app->patch("/reviews/updated", function() use ($app)
+	{
+		$review_to_edit = Review::find($_POST['current_reviewId']);
+		$review_to_edit->update($_POST['name']);
+		$restaurant = Restaurant::find($_POST['restaurant_id']);
+		return $app['twig']->render('restaurant.html.twig', array('reviews' => $restaurant->getReviews(), 'restaurant' => $restaurant));
 	});
 
 

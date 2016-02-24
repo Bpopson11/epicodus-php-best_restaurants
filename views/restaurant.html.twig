@@ -10,7 +10,7 @@
         <ol>
             {% for review in reviews %}
                 <li>
-                <p>Name: {{ review.getName }}</p>
+                <p>Name: {{ review.getName }}<a href="/review/{{ restaurant.getId }}/{{ review.getId }}/edit_form">edit name</a></p>
                 <p>Rating: {{ review.getRating }}</p>
                 <p>Comments: {{ review.getComments }}</p>
                 </li>
@@ -35,6 +35,17 @@
 
         <button type='submit'>Add Review</button>
     </form>
+
+    {% if form %}
+        <form action="/reviews/updated" method="post">
+            <input name="_method" type="hidden" value="patch">
+            <input name="current_reviewId" type="hidden" value="{{ current_review.getId() }}">
+            <input name="restaurant_id" type="hidden" value="{{ restaurant.getId() }}">
+            <input type="text" name="name">
+            <button type="submit" name="button">Edit Name</button>
+        </form>
+    {% endif %}
+
 
     <p><a href='/'>Home</a></p>
 </body>

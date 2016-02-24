@@ -18,7 +18,7 @@
         <p>Here are all your cuisines:</p>
         <ul>
             {% for cuisine in cuisines %}
-                <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a><a href='/cuisines/{{ cuisine.getId }}/edit'>edit</a></li>
+                <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a><a href='/cuisines/{{ cuisine.getId }}/edit_form'>edit</a></li>
             {% endfor %}
         </ul>
     {% else %}
@@ -26,7 +26,7 @@
     {% endif %}
 
     {% if form %}
-        <form action="/cuisines" method="post">
+        <form action="/cuisines/updated" method="post">
             <input name="_method" type="hidden" value="patch">
             <input name="current_cuisineId" type="hidden" value="{{ current_cuisine.getId() }}">
             <input type="text" name="type">
