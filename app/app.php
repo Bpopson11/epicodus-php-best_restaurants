@@ -5,8 +5,8 @@
 	require_once __DIR__.'/../src/Restaurant.php';
 	require_once __DIR__.'/../src/Review.php';
 
-	use Symfony\Component\Debug\Debug;
-	    Debug::enable();
+	// use Symfony\Component\Debug\Debug;
+	//     Debug::enable();
 
 	$server = 'mysql:host=localhost;dbname=best_rests';
 	$username = 'root';
@@ -14,14 +14,19 @@
 	$DB = new PDO($server, $username, $password);
 
 	$app = new Silex\Application();
-	$app['debug'] = true;
+	// $app['debug'] = true;
 
 	$app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
+	use Symfony\Component\HttpFoundation\Request;
+	Request::enableHttpMethodParameterOverride();
+
+
 	$app->get("/", function() use ($app)
 	{
-		return $app['twig']->render('home.html.twig', array('cuisines' => Cuisine::getAll()));
+		return $app['twig']->render('home.html.twig', array('cuisines' => Cuisine::getAll(), 'form' => false));
 	});
+
 
     $app->post("/cuisines", function() use ($app)
 	{
@@ -30,12 +35,29 @@
 		return $app['twig']->render('home.html.twig', array('cuisines' => Cuisine::getAll()));
 	});
 
+
+	$app->get("/cuisines/{id}/edit", function($id) use ($app)
+	{
+		$current_cuisine = Cuisine::find($id);
+		$cuisines = Cuisine::getAll();
+		return $app['twig']->render('home.html.twig', array('current_cuisine' => $current_cuisine, 'cuisines' => $cuisines, 'form' => true));
+	});
+
+
+	$app->patch("/cuisines", function() use ($app)
+	{
+		$cuisine_to_edit = Cuisine::find($_POST['current_cuisineId']);
+		$cuisine_to_edit->update($_POST['type']);
+		return $app['twig']->render('home.html.twig', array('cuisines' => Cuisine::getAll()));
+	});
+
+
+
 	$app->get("/cuisine/{id}", function($id) use ($app)
 	{
 		$cuisine = Cuisine::find($id);
 		return $app['twig']->render('cuisine.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
 	});
-
 
 
 	$app->post("/restaurants", function() use ($app)
