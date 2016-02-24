@@ -1,10 +1,41 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
+<head>
+    <title>{{ restaurant.getName }}</title>
+</head>
+<body>
+    <h1>{{ restaurant.getName }}</h1>
 
-    </body>
+    {% if reviews is not empty %}
+        <p>Here are all your reviews:</p>
+        <ol>
+            {% for review in reviews %}
+                <li>
+                <p>Name: {{ review.getName }}</p>
+                <p>Rating: {{ review.getRating }}</p>
+                <p>Comments: {{ review.getComments }}</p>
+                </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+      <p>There are no reviews yet, add some!</p>
+    {% endif %}
+
+    <h4>Add a review</h4>
+
+    <form action='/reviews' method='post'>
+        <input id="restaurant_id" name="restaurant_id" type="hidden" value="{{ restaurant.getId() }}">
+        <label for='name'>Name</label>
+        <input id='name' name='name' type='text'>
+
+        <label for="rating">Rating</label>
+        <input type="text" name="rating">
+
+        <label for="comments">Comments</label>
+        <input type="text" name="comments">
+
+        <button type='submit'>Add Review</button>
+    </form>
+
+    <p><a href='/'>Home</a></p>
+</body>
 </html>
