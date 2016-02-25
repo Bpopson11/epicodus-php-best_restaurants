@@ -10,10 +10,9 @@
 				$this->id = $id;
 		}
 
-
 		function getType()
 		{
-				return $this->type;
+				return ucwords($this->type);
 		}
 
 		function setType($type)

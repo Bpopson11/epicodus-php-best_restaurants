@@ -1,10 +1,14 @@
 <html>
 <head>
     <link href="/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href='https://fonts.googleapis.com/css?family=Laila' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/styles.css" media="screen">
     <title>{{ restaurant.getName }}</title>
 </head>
 <body>
+  <div class="jumbotron">
+    <h1>Best Restaurants in Town!</h1>
+  </div>
     <h1>{{ restaurant.getName }}</h1>
 
     {% if reviews is not empty %}
