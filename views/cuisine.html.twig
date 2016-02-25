@@ -17,11 +17,15 @@
         <ul>
             {% for restaurant in restaurants %}
                 <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a>
+                  <ul>
+                    <li class="restaurant-detail">{{ restaurant.getAddress }}</li>
+                    <li class="restaurant-detail">{{ restaurant.getDescription }}</li>
+                  </ul>
 
-                    <br><a href="/restaurant/{{ cuisine.getId }}/{{ restaurant.getId }}/edit_form">Edit</a>
+                    <button><a href="/restaurant/{{ cuisine.getId }}/{{ restaurant.getId }}/edit_form">Edit</a></button>
                     <form action="/restaurants/{{ cuisine.getId }}/{{ restaurant.getId }}/delete" method="post">
                         <input name="_method" type="hidden" value="delete">
-                        <button type="submit">Delete this restaurant</button>
+                        <button type="submit">Delete </button>
                     </form>
                 </li>
             {% endfor %}

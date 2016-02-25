@@ -9,6 +9,7 @@
   <div class="jumbotron">
     <h1>Best Restaurants in Town!</h1>
   </div>
+    <div class="container">
     <h1>{{ restaurant.getName }}</h1>
 
     {% if reviews is not empty %}
@@ -16,10 +17,10 @@
         <ol>
             {% for review in reviews %}
                 <li>
-                <p>Name: {{ review.getName }}<a href="/review/{{ restaurant.getId }}/{{ review.getId }}/edit_form">edit name</a>
+                <p>Name: {{ review.getName }}<a href="/reviews/{{ restaurant.getId }}/{{ review.getId }}/edit_form">Edit</a>
                     <form action="/reviews/{{ restaurant.getId }}/{{ review.getId }}" method="post">
                         <input name="_method" type="hidden" value="delete">
-                        <button type="submit">Delete this category</button>
+                        <button type="submit">Delete</button>
                     </form>
                 </p>
                 <p>Rating: {{ review.getRating }}</p>
@@ -38,7 +39,7 @@
         <label for='name'>Name</label>
         <input id='name' name='name' type='text'>
 
-        <label for="rating">Rating</label>
+        <label for="rating">Rating <small>out of five</small></label>
         <input type="text" name="rating">
 
         <label for="comments">Comments</label>
@@ -59,5 +60,6 @@
 
 
     <p><a href='/'>Home</a></p>
+  </div>
 </body>
 </html>

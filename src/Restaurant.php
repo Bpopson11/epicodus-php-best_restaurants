@@ -19,7 +19,7 @@
 
 
 		function getName(){
-				return $this->name;
+				return ucwords($this->name);
 		}
 
 		function setName($name)
@@ -116,7 +116,7 @@
 
 		function getReviews()
 		{
-				$reviews = Array();
+				$reviews = array();
 				$returned_reviews = $GLOBALS['DB']->query("SELECT * FROM reviews WHERE restaurant_id = {$this->getId()};");
 						foreach($returned_reviews as $review) {
 								$name = $review['name'];

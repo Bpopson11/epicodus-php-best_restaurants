@@ -52,11 +52,6 @@
 				return $this->restaurant_id;
 		}
 
-		function setRestaurantId($restaurant_id)
-		{
-				$this->restaurant_id = $restaurant_id;
-		}
-
 		function getId()
 		{
 				return $this->id;
