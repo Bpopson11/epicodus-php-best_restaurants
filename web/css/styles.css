@@ -38,6 +38,15 @@ a {
   color: #1f323c;
 }
 
-.restaurant-detail {
-  font-size: 17px;
+.output-detail {
+  font-size: 18px;
+}
+
+.review_titles {
+  color: #a55502;
+  font-weight: bolder;
+}
+
+.output-title{
+  font-size: 20px;
 }

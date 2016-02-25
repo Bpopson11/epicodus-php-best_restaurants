@@ -16,16 +16,15 @@
         <p>Here are all your reviews:</p>
         <ol>
             {% for review in reviews %}
-                <li>
-                <p>Name: {{ review.getName }}<a href="/reviews/{{ restaurant.getId }}/{{ review.getId }}/edit_form">Edit</a>
-                    <form action="/reviews/{{ restaurant.getId }}/{{ review.getId }}" method="post">
-                        <input name="_method" type="hidden" value="delete">
-                        <button type="submit">Delete</button>
-                    </form>
-                </p>
-                <p>Rating: {{ review.getRating }}</p>
-                <p>Comments: {{ review.getComments }}</p>
+                <li class="output-title">
+                <p class="output-title"> Name: <span class="review_titles output-detail">{{ review.getName }}</span></p>
+                <p class="output-title"> Rating: <span class="review_titles output-detail">{{ review.getRating }}</span></p>
+                <p class="output-title"> Comments: <span class="review_titles output-detail">{{ review.getComments }}</span></p>
                 </li>
+                <form action="/reviews/{{ restaurant.getId }}/{{ review.getId }}" method="post">
+                    <input name="_method" type="hidden" value="delete">
+                    <button type="submit">Delete</button>
+                </form>
             {% endfor %}
         </ol>
     {% else %}
@@ -37,13 +36,13 @@
     <form action='/reviews' method='post'>
         <input id="restaurant_id" name="restaurant_id" type="hidden" value="{{ restaurant.getId() }}">
         <label for='name'>Name</label>
-        <input id='name' name='name' type='text'>
+        <input id='name' name='name' type='text' required>
 
         <label for="rating">Rating <small>out of five</small></label>
-        <input type="text" name="rating">
+        <input type="number" name="rating" required>
 
         <label for="comments">Comments</label>
-        <input type="text" name="comments">
+        <input type="text" name="comments" required>
 
         <button type='submit'>Add Review</button>
     </form>

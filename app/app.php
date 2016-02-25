@@ -123,8 +123,7 @@
 				$review->save();
 				$restaurant = Restaurant::find($_POST['restaurant_id']);
 
-				return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant, 'reviews' => $restaurant->getReviews()));
-
+				return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant, 'reviews' => $restaurant->getReviews(), 'form' => false));
 		});
 
 		$app->get("/review/{restaurant_id}/{review_id}/edit_form", function($restaurant_id, $review_id) use ($app)

@@ -18,8 +18,8 @@
             {% for restaurant in restaurants %}
                 <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a>
                   <ul>
-                    <li class="restaurant-detail">{{ restaurant.getAddress }}</li>
-                    <li class="restaurant-detail">{{ restaurant.getDescription }}</li>
+                    <li class="output-detail">{{ restaurant.getAddress }}</li>
+                    <li class="output-detail">{{ restaurant.getDescription }}</li>
                   </ul>
 
                     <button><a href="/restaurant/{{ cuisine.getId }}/{{ restaurant.getId }}/edit_form">Edit</a></button>
@@ -39,13 +39,13 @@
     <form action='/restaurants' method='post'>
         <input id="cuisine_id" name="cuisine_id" type="hidden" value="{{ cuisine.getId() }}">
         <label for='name'>Name</label>
-        <input id='name' name='name' type='text'>
+        <input id='name' name='name' type='text' required>
 
         <label for="address">Address</label>
-        <input type="text" name="address">
+        <input type="text" name="address" required>
 
         <label for="description">Description</label>
-        <input type="text" name="description">
+        <input type="text" name="description" required>
 
         <button type='submit'>Add Restaurant</button>
     </form>
