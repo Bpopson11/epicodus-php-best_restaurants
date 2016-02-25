@@ -1,10 +1,11 @@
 <html>
 <head>
-    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="css/styles.css" media="screen">
+    <link href="/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="/css/styles.css" media="screen">
     <title>Food Finder</title>
 </head>
 <body>
+  <div class="container">
     <h1>Check out these cuisines</h1>
 
     <p>Add a new cuisine:</p>
@@ -20,10 +21,10 @@
         <p>Here are all your cuisines:</p>
         <ul>
             {% for cuisine in cuisines %}
-                <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a><br><button><a href='/cuisines/{{ cuisine.getId }}/edit_form'>edit</a></button>
+                <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a><br><br><button class="btn btn-sm"><a href='/cuisines/{{ cuisine.getId }}/edit_form'>Edit</a></button><br><br>
                     <form action="/cuisines/{{ cuisine.getId }}/delete" method="post">
                         <input name="_method" type="hidden" value="delete">
-                        <button class="btn" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Delete</button>
+                        <button class="btn btn-sm" type="submit">Delete</button>
                     </form>
                 </li>
             {% endfor %}
@@ -40,6 +41,6 @@
             <button type="submit" name="button">Edit Name</button>
         </form>
     {% endif %}
-
+  </div>
 </body>
 </html>

@@ -1,10 +1,11 @@
 <html>
 <head>
-    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="css/styles.css" media="screen">
+    <link href="/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="/css/styles.css" media="screen">
     <title>{{ cuisine.getType }}</title>
 </head>
 <body>
+  <div class="container">
     <h1>{{ cuisine.getType }}</h1>
 
     {% if restaurants is not empty %}
@@ -52,5 +53,6 @@
     {% endif %}
 
     <p><a href='/'>Home</a></p>
+  </div>
 </body>
 </html>
