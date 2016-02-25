@@ -64,7 +64,7 @@
 
 		function save()
 		{
-				$GLOBALS['DB']->query("INSERT INTO restaurants (name, address, cuisine_id, description) VALUES ('{$this->name}', '{$this->address}', {$this->cuisine_id}, '{$this->description}')");
+				$GLOBALS['DB']->query("INSERT INTO restaurants (name, address, cuisine_id, description) VALUES ('{$this->getName()}', '{$this->address}', {$this->cuisine_id}, '{$this->description}')");
 				$this->id = $GLOBALS['DB']->lastInsertId();
 		}
 

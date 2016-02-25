@@ -1,7 +1,5 @@
 <?php
 
-
-
 	/**
 	* @backupGlobals disabled
 	* @backupStaticAttributes disabled
@@ -21,48 +19,48 @@
 
 	class CuisineTest extends PHPUnit_Framework_TestCase
 	{
-		protected function tearDown()
-		{
-			Cuisine::deleteAll();
-			Restaurant::deleteAll();
-			Review::deleteAll();
-		}
+			protected function tearDown()
+			{
+					Cuisine::deleteAll();
+					Restaurant::deleteAll();
+					Review::deleteAll();
+			}
 
-		function test_save()
-		{
-			//Arrange
-			$cuisine_name = "Mexican";
-			$new_cuisine = new Cuisine($cuisine_name);
-			$new_cuisine->save();
+			function test_save()
+			{
+					//Arrange
+					$cuisine_name = "Mexican";
+					$new_cuisine = new Cuisine($cuisine_name);
+					$new_cuisine->save();
 
-			//Act
-			$result = Cuisine::getAll();
+					//Act
+					$result = Cuisine::getAll();
 
-			//Assert
-			$this->assertEquals($new_cuisine, $result[0]);
-		}
-
-
-		function test_getAll()
-		{
-			//Arrange
-			$cuisine_name = "Mexican";
-			$new_cuisine = new Cuisine($cuisine_name);
-			$new_cuisine->save();
-
-			$cuisine_name2 = "Korean";
-			$new_cuisine2 = new Cuisine($cuisine_name2);
-			$new_cuisine2->save();
+					//Assert
+					$this->assertEquals($new_cuisine, $result[0]);
+			}
 
 
-			$result = Cuisine::getAll();
+			function test_getAll()
+			{
+					//Arrange
+					$cuisine_name = "Mexican";
+					$new_cuisine = new Cuisine($cuisine_name);
+					$new_cuisine->save();
 
-			$this->assertEquals([$new_cuisine, $new_cuisine2], $result);
+					$cuisine_name2 = "Korean";
+					$new_cuisine2 = new Cuisine($cuisine_name2);
+					$new_cuisine2->save();
 
-		}
 
-				function test_deleteAll()
-				{
+					$result = Cuisine::getAll();
+
+					$this->assertEquals([$new_cuisine, $new_cuisine2], $result);
+
+			}
+
+			function test_deleteAll()
+			{
 					$cuisine_name = "Mexican";
 					$new_cuisine = new Cuisine($cuisine_name);
 					$new_cuisine->save();
@@ -75,10 +73,10 @@
 					$result = Cuisine::getAll();
 
 					$this->assertEquals([], $result);
-				}
+			}
 
-				function test_find()
-					{
+			function test_find()
+				{
 						//Arrange
 						$cuisine_name = "Mexican";
 						$new_cuisine = new Cuisine($cuisine_name);
@@ -89,10 +87,10 @@
 
 						//Assert
 						$this->assertEquals($new_cuisine, $result);
-					}
+				}
 
-					function test_delete()
-					{
+				function test_delete()
+				{
 						//Arrange
 						$cuisine_name = "Mexican";
 						$new_cuisine = new Cuisine($cuisine_name);
@@ -109,10 +107,10 @@
 						//Assert
 						$this->assertEquals([$new_cuisine2], $result);
 
-					}
+				}
 
-					function test_update()
-					{
+				function test_update()
+				{
 						//Arrange
 						$cuisine_name = "Mexican";
 						$new_cuisine = new Cuisine($cuisine_name);
@@ -125,10 +123,10 @@
 						$result = Cuisine::getAll();
 						//Assert
 						$this->assertEquals('Latin', $new_cuisine->getType());
-					}
+				}
 
-					function test_getRestaurants()
-					{
+				function test_getRestaurants()
+				{
 						//Arrange
 						$cuisine_name = "Mexican";
 						$new_cuisine = new Cuisine($cuisine_name);
@@ -146,7 +144,7 @@
 						//Assert
 						$this->assertEquals([$new_restaurant], $result);
 
-					}
+				}
 			}
 
 ?>

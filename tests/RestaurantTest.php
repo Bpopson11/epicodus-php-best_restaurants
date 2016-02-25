@@ -51,7 +51,6 @@
 			$this->assertEquals($new_restaurant, $result[0]);
 		}
 
-
 		function test_getAll()
 		{
 			//Arrange

@@ -31,7 +31,8 @@
 
 		$app->post("/cuisines", function() use ($app)
 		{
-				$cuisine = new Cuisine($_POST['type']);
+				$cuisine = new Cuisine ($_POST['type']);
+
 				$cuisine->save();
 
 				return $app['twig']->render('home.html.twig', array('cuisines' => Cuisine::getAll()));
