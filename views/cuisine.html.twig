@@ -1,5 +1,7 @@
 <html>
 <head>
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="css/styles.css" media="screen">
     <title>{{ cuisine.getType }}</title>
 </head>
 <body>
@@ -9,7 +11,9 @@
         <p>Here are all your restaurants:</p>
         <ul>
             {% for restaurant in restaurants %}
-                <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a><a href="/restaurant/{{ cuisine.getId }}/{{ restaurant.getId }}/edit_form">Edit</a>
+                <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a>
+
+                    <br><a href="/restaurant/{{ cuisine.getId }}/{{ restaurant.getId }}/edit_form">Edit</a>
                     <form action="/restaurants/{{ cuisine.getId }}/{{ restaurant.getId }}/delete" method="post">
                         <input name="_method" type="hidden" value="delete">
                         <button type="submit">Delete this restaurant</button>

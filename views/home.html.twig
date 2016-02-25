@@ -1,5 +1,7 @@
 <html>
 <head>
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="css/styles.css" media="screen">
     <title>Food Finder</title>
 </head>
 <body>
@@ -18,10 +20,10 @@
         <p>Here are all your cuisines:</p>
         <ul>
             {% for cuisine in cuisines %}
-                <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a><a href='/cuisines/{{ cuisine.getId }}/edit_form'>edit</a>
+                <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a><br><button><a href='/cuisines/{{ cuisine.getId }}/edit_form'>edit</a></button>
                     <form action="/cuisines/{{ cuisine.getId }}/delete" method="post">
                         <input name="_method" type="hidden" value="delete">
-                        <button type="submit">Delete this cuisine</button>
+                        <button class="btn" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Delete</button>
                     </form>
                 </li>
             {% endfor %}
