@@ -1,5 +1,6 @@
 li {
-  font-size: 20px;
+  font-size: 25px;
+  color: #1f323c;
 }
 
 .btn {
@@ -15,7 +16,7 @@ li {
 
 body {
   background-color: #89a6aa;
-  color: #302c23;
+  color: #1f323c;
   font-family:'Laila', serif;
   font-size: 15px;
 }
@@ -23,6 +24,7 @@ body {
 
 button {
   background-color: #c0884d;
+  font-size:13px;
 }
 
 input {
@@ -30,7 +32,7 @@ input {
 }
 
 label {
-  font-size: 20px;
+  font-size: 21px;
 }
 
 a {

@@ -11,7 +11,7 @@
     </div>
     <div class="container">
       <form action="/cuisines" method="post">
-      <label class for="type">Cuisine type:</label>
+      <label class for="type">Cuisine: </label>
       <input id="type" name="type" type="text">
 
       <button type="submit">Add Cuisine Type</button>
@@ -22,10 +22,10 @@
         <ul>
             {% for cuisine in cuisines %}
                 <li>
-                <a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a><br><button class="btn btn-sm"><a href='/cuisines/{{ cuisine.getId }}/edit_form'>Edit</a></button>
+                <a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a><br><button><a href='/cuisines/{{ cuisine.getId }}/edit_form'>Edit</a></button>
                 <form action="/cuisines/{{ cuisine.getId }}/delete" method="post">
                 <input name="_method" type="hidden" value="delete">
-                <button class="btn btn-sm" type="submit">Delete</button>
+                <button type="submit">Delete</button>
                 </form>
                 </li>
             {% endfor %}
