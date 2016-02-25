@@ -52,6 +52,13 @@
 		return $app['twig']->render('home.html.twig', array('cuisines' => Cuisine::getAll()));
 	});
 
+	$app->delete("/cuisines/{id}/delete", function($id) use ($app)
+	{
+		$cuisine = Cuisine::find($id);
+		$cuisine->delete();
+		return $app['twig']->render('home.html.twig', array('cuisines' => Cuisine::getAll(), 'form' => false));
+	});
+
 // Specific cuisine pages (show restaurants)
 
 	$app->get("/cuisine/{id}", function($id) use ($app)
@@ -86,12 +93,12 @@
 		return $app['twig']->render('cuisine.html.twig', array('restaurants' => $cuisine->getRestaurants(), 'cuisine' => $cuisine));
 	});
 
-	$app->delete("/reviews/{restaurant_id}/{review_id}", function($restaurant_id, $review_id) use ($app)
+	$app->delete("/restaurants/{cuisine_id}/{restaurant_id}/delete", function($cuisine_id, $restaurant_id) use ($app)
 	{
-		$review = Review::find($review_id);
-		$review->delete();
 		$restaurant = Restaurant::find($restaurant_id);
-		return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant, 'reviews' => $restaurant->getReviews()));
+		$restaurant->delete();
+		$cuisine = Cuisine::find($cuisine_id);
+		return $app['twig']->render('cuisine.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
 	});
 
 

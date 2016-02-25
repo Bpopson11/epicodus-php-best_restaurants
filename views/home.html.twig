@@ -18,7 +18,12 @@
         <p>Here are all your cuisines:</p>
         <ul>
             {% for cuisine in cuisines %}
-                <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a><a href='/cuisines/{{ cuisine.getId }}/edit_form'>edit</a></li>
+                <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a><a href='/cuisines/{{ cuisine.getId }}/edit_form'>edit</a>
+                    <form action="/cuisines/{{ cuisine.getId }}/delete" method="post">
+                        <input name="_method" type="hidden" value="delete">
+                        <button type="submit">Delete this cuisine</button>
+                    </form>
+                </li>
             {% endfor %}
         </ul>
     {% else %}

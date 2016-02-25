@@ -9,7 +9,12 @@
         <p>Here are all your restaurants:</p>
         <ul>
             {% for restaurant in restaurants %}
-                <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a><a href="/restaurant/{{ cuisine.getId }}/{{ restaurant.getId }}/edit_form">Edit</a></li>
+                <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a><a href="/restaurant/{{ cuisine.getId }}/{{ restaurant.getId }}/edit_form">Edit</a>
+                    <form action="/restaurants/{{ cuisine.getId }}/{{ restaurant.getId }}/delete" method="post">
+                        <input name="_method" type="hidden" value="delete">
+                        <button type="submit">Delete this restaurant</button>
+                    </form>
+                </li>
             {% endfor %}
         </ul>
     {% else %}
